@@ -1,5 +1,5 @@
 +++
-title = "Adaptive Rejection Sampling"
+title = "Julia Package: Adaptive Rejection Sampling"
 date = 2018-08-08T13:23:42-05:00
 draft = false
 

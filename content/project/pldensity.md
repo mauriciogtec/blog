@@ -1,5 +1,5 @@
 +++
-title = "Non-parametric Density Estimation with Particle Learning"
+title = "R package: Non-parametric Density Estimation with Particle Learning"
 date = 2018-08-08T13:23:42-05:00
 draft = false
 
