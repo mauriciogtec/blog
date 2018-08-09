@@ -42,4 +42,4 @@ Hi! I am Mauricio Garcia Tec, inquisitive data scientist and graduate student at
 
 I acquired broad experience tackling real-world data problems throughout my ventures in quantitative finance, public policy research, and university lecturing. See my [LinkedIn profile](https://www.linkedin.com/in/mauriciogtec/) for more details about my skills and experience. 
 
-My other interests include Bayesian statistics, which provide an elegant framework for statistical modelling with better composability, model selection, and uncertainty quantification than traditional approaches. Bayesian models are usually slower to train than their classical counterparts, but we are working to change that.
+My other interests include Bayesian statistics, which provide an elegant framework for statistical modelling with better model composability, model selection, and uncertainty quantification than traditional approaches. Bayesian models are usually slower to train than their classical counterparts, but we are working to change that.
