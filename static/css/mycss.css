@@ -1,6 +1,6 @@
 .navbar-default .navbar-brand {
     font-size: 1em;
 }
-.code {
-    font-size: 80%
+pre code {
+    font-size: 80%;
 }
