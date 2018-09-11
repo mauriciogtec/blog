@@ -5,8 +5,8 @@ draft = false
 
 # Tags and categories
 # For example, use `tags = []` for no tags, or the form `tags = ["A Tag", "Another Tag"]` for one or more tags.
-tags = []
-categories = []
+tags = ["python", "yaml", "csv"]
+categories = ["LBJ", "UT Austin"]
 
 # Featured image
 # Place your image in the `static/img/` folder and reference its filename below, e.g. `image = "example.jpg"`.
@@ -21,7 +21,9 @@ The answer to the question of course depends on several aspects: the sources, th
 
 While modern approaches in Big Data endorse the strategy of first extracting high volumes of raw data and worry about processing later; in here we shall be concerned with the opposite case, when data has to be captured manually by a human team, and we don't want to spend hours later trying to make it amenable for the computer to read.
 
-I want to present a basic introduction to the YAML (yet-another-markup-language) approach to keeping data records. It's advantages is that
+You are probably familiar with CSVs, because you can create CSVs in Excel, which makes them quite handy. However, they are mainly useful for highly structured data having a fixed known number of columns per record.
+
+I want to present a basic introduction to YAML (yet-another-markup-language), a simple approach to keeping data records. It's advantages are
 - it is machine-readable
 - it is human-readable
 - ergo, human-writable too
@@ -39,7 +41,7 @@ Below are the contents of a simple YAML file named `example_record.yaml`. This i
 ```yaml
 # filename: example_record.yaml
 # description: a simple yaml for annotated bibliography
-key: "1,000Days_2018_What_We're_Watching_in_Congress" 
+id: "1,000Days_2018_What_We're_Watching_in_Congress" 
 added_by: "John Doe"
 title: "Congress is Back in Session: Here's What We're Watching"
 author:  "1,000 Days"
@@ -56,7 +58,7 @@ keywords:
   - "Infants and Children"
   - "WIC, 2020-2025 Dietary Guidelines for Americans"
   - "DGAs, Maternal Mortality"
-  - "Children’s Health Insurance Program"
+  - "Children's Health Insurance Program"
   - "CHIP, Medicaid"
   - "public charge"
 summary: |
@@ -94,6 +96,14 @@ with open("example.yaml", "r") as file:
 
 
 ```python
+print(record['id'])
+```
+
+    1,000Days_2018_What_We're_Watching_in_Congress
+    
+
+
+```python
 print(record['title'])
 ```
 
@@ -105,7 +115,7 @@ print(record['title'])
 print(record['keywords'])
 ```
 
-    ['Congress', 'Farm Bill', 'Supplemental Nutrition Assistance Program', 'SNAP', 'The Special Supplemental Nutrition Program for Women', 'Infants and Children', 'WIC, 2020-2025 Dietary Guidelines for Americans', 'DGAs, Maternal Mortality', 'Childrenâ€™s Health Insurance Program', 'CHIP, Medicaid', 'public charge']
+    ['Congress', 'Farm Bill', 'Supplemental Nutrition Assistance Program', 'SNAP', 'The Special Supplemental Nutrition Program for Women', 'Infants and Children', 'WIC, 2020-2025 Dietary Guidelines for Americans', 'DGAs, Maternal Mortality', "Children's Health Insurance Program", 'CHIP, Medicaid', 'public charge']
     
 
 
@@ -127,7 +137,9 @@ print(record['summary'])
     6)     Threats to Immigrant Families
     a.    Public Charge, a proposed Dept. of Homeland Security rule that would limit immigrant access to benefits such as WIC and Medicaid is currently pending review.
     advocacy_facts: |
-    In 2013, Congress mandated that the United States Department of Agriculture (USDA) and the United States Department of Health and Human Services (HHS) include pregnant women and young children as part of the 2020-2025 Dietary Guidelines for Americans (DGAs). The updated DGAs will inform federal nutrition programs that reach young children and their families, as well as serve as an important reference point for physicians, nutrition counselors, early childcare providers, among others.  â€“ 1,000 Days
+    In 2013, Congress mandated that the United States Department of Agriculture (USDA) and the United States Department of Health and Human Services (HHS) include pregnant women and young children as part of the 2020-2025 Dietary Guidelines for Americans (DGAs). The updated DGAs will inform federal nutrition programs that reach young children and their families, as well as serve as an important reference point for physicians, nutrition counselors, early childcare providers, among others.
+    additional_sources: 
+    - 'https://thousanddays.org/draft-house-farm-bill-will-harm-families-and-children/'
     
     
 
@@ -233,8 +245,7 @@ for key, val in record2.items():
     adict has data type:  <class 'dict'>
     
 
-## Long texts
-
+## Multiline strings
 There are two ways to deal with long texts. Collapsing lines, when the text is really a long line or paragraph', or respecting format. Here'a an example.
 
 ```yaml
@@ -282,7 +293,6 @@ For some applications it can be useufl to have one big file for different record
 ```yaml
 # filename: example4.yml
 # description: a multi-record YAML
----
 # starts record 1
 key11: value11
 key12: value12
@@ -304,14 +314,4 @@ with open("example4.yaml", "r") as file:
 
     This is record 1
     
-
-
-    {'key11': 'value11', 'key12': 'value12'}
-
-
-    This is record 2
-    
-
-
-    {'key21': 'value21', 'key22': 'value22'}
 
