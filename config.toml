@@ -153,7 +153,8 @@ enableGitInfo = false
   #   https://sourcethemes.com/academic/post/writing-markdown-latex/#highlighting-options
   highlight = true
   highlight_languages = ["r", "python", "julia", "c++", "yaml"]
-  # highlight_style = "github"
+  highlight_style = "monokai"
+  PygmentsCodeFences = true
 
   # Enable native social sharing buttons?
   sharing = true
