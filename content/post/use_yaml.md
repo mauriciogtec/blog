@@ -77,6 +77,7 @@ summary: |
   a.    Public Charge, a proposed Dept. of Homeland Security rule that would limit immigrant access to benefits such as WIC and Medicaid is currently pending review.
   advocacy_facts: |
   In 2013, Congress mandated that the United States Department of Agriculture (USDA) and the United States Department of Health and Human Services (HHS) include pregnant women and young children as part of the 2020-2025 Dietary Guidelines for Americans (DGAs). The updated DGAs will inform federal nutrition programs that reach young children and their families, as well as serve as an important reference point for physicians, nutrition counselors, early childcare providers, among others.  – 1,000 Days
+
 additional_sources: 
   - 'https://thousanddays.org/draft-house-farm-bill-will-harm-families-and-children/'
 ```
@@ -115,8 +116,9 @@ print(record['title'])
 print(record['keywords'])
 ```
 
-    ['Congress', 'Farm Bill', 'Supplemental Nutrition Assistance Program', 'SNAP', 'The Special Supplemental Nutrition Program for Women', 'Infants and Children', 'WIC, 2020-2025 Dietary Guidelines for Americans', 'DGAs, Maternal Mortality', "Children's Health Insurance Program", 'CHIP, Medicaid', 'public charge']
-    
+```text
+['Congress', 'Farm Bill', 'Supplemental Nutrition Assistance Program', 'SNAP', 'The Special Supplemental Nutrition Program for Women', 'Infants and Children', 'WIC, 2020-2025 Dietary Guidelines for Americans', 'DGAs, Maternal Mortality', "Children's Health Insurance Program", 'CHIP, Medicaid', 'public charge']
+```
 
 
 ```python
