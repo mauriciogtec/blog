@@ -152,10 +152,11 @@ enableGitInfo = false
   #   For more info on the highlighting options, see:
   #   https://sourcethemes.com/academic/post/writing-markdown-latex/#highlighting-options
   highlight = false
-  pygmentsUseClassic = false
+  pygmentsUseClassic = true
+  pygmentsUseClasses = true
   highlight_languages = ["r", "python", "julia", "cpp", "yaml"]
   highlight_style = "monokai-sublime"
-  pygmentscodefences = true
+  pygmentsCodeFences = true
   pygmentsCodefencesGuessSyntax = false
   
   # Enable native social sharing buttons?
