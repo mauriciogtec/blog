@@ -36,10 +36,10 @@ Our task is to use YAML to serialize, records of annotated bibliography. Note th
 
 ## A simple example
 
-Below are the contents of a simple YAML file named `example_record.yaml`. This is a textfile, pretty much like a file ending with `.txt` which you have most likely used before and opened with the Notepad if you are a Windows user. This file can also be opened with the Notepad, but it ends with `.yaml` instead of `.txt`. Note that the colors are not part of the file, but of the display engine we are using here.
+Below are the contents of a simple YAML file named `example1.yaml`. This is a textfile, pretty much like a file ending with `.txt` which you have most likely used before and opened with the Notepad if you are a Windows user. This file can also be opened with the Notepad, but it ends with `.yaml` instead of `.txt`. Note that the colors are not part of the file, but of the display engine we are using here.
 
 ```yaml
-# filename: example_record.yaml
+# filename: example1.yaml
 # description: a simple yaml for annotated bibliography
 id: "1,000Days_2018_What_We're_Watching_in_Congress" 
 added_by: "John Doe"
@@ -92,7 +92,7 @@ import yaml # library for YAML support in python
 
 
 ```python
-with open("example.yaml", "r") as file:
+with open("example1.yaml", "r") as file:
     record = yaml.load(file)
 ```
 
@@ -293,7 +293,7 @@ this is really a single line of text despite appearances
 
 ### More than one record per file
 
-For some applications it can be useufl to have one big file for different records. That's no problem for YAML. Just separate them with `---` lines.
+For some applications it can be useful to have one big file for different records. That's no problem for YAML. Just separate them with `---` lines.
 
 ```yaml
 # filename: example4.yml
@@ -319,5 +319,69 @@ with open("example4.yaml", "r") as file:
 
 ```nohighlight
 This is record 1
+```    
+
+```nohighlight
+{'key11': 'value11', 'key12': 'value12'}
 ```
+
+```nohighlight
+This is record 2
+```    
+
+```nohighlight
+{'key21': 'value21', 'key22': 'value22'}
+```
+
+## What can we do with YAML?
+
+This is a broad question, since there's a million things you can do with a database. However here's a quick example using Python.
+```yaml
+# filename: example5.yml
+# description: a multi-record YAML for topic queries
+id: 1
+topics: ['sports', 'war']
+---
+id: 2
+topics: ['sports', 'war']
+---
+id: 3 
+topics: ['food', 'war']
+---
+id: 4 
+topics: ['sports', 'beauty', 'art']
+---
+id: 5 
+topics: ['art', 'war']
+---
+id: 6
+topics: ['literature']
+---
+id: 7 
+topics: ['sports', 'art']
+```
+
+
+```python
+with open("example5.yaml", "r") as file:
+    records = list(yaml.load_all(file))
+```
+
+Suppose that we want to know what id's are associated with the topic `sports`. Then we can use Python to do this:
+
+
+```python
+[rec['id'] for rec in records if 'sports' in rec['topics']] # find record id's that have topic sports
+```
+
+
+
+```nohighlight
+[1, 2, 4, 7]
+```
+
+
+## Learn more
+
+There isn't much science to YAML. Most of the time what we learned is enough. But to learn more you can check the official documentation and this [reference card](http://yaml.org/refcard.html).
 

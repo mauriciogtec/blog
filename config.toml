@@ -155,9 +155,9 @@ enableGitInfo = false
   pygmentsUseClassic = false
   # pygmentsUseClasses = false
   highlight_languages = ["r", "python", "julia", "cpp", "yaml"]
-  # highlight_style = "monokai"
+  highlight_style = "monokai"
   pygmentsCodeFences = true
-  pygmentsStyle = "monokai"
+  # pygmentsStyle = "agate"
   # pygmentsCodefencesGuessSyntax = false
   
   # Enable native social sharing buttons?
