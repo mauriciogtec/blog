@@ -151,8 +151,8 @@ enableGitInfo = false
   #
   #   For more info on the highlighting options, see:
   #   https://sourcethemes.com/academic/post/writing-markdown-latex/#highlighting-options
-  highlight = true
-  pygmentsUseClassic = false
+  highlight = false
+  pygmentsUseClassic = true
   pygmentsUseClasses = false
   highlight_languages = ["r", "python", "julia", "cpp", "yaml"]
   highlight_style = "monokai"
