@@ -4,4 +4,6 @@
 
 code {
     font-size: 80%;
+    white-space: pre-wrap;
+    overflow: auto;
 }

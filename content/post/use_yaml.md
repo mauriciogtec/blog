@@ -28,11 +28,11 @@ I want to present a basic introduction to YAML (yet-another-markup-language), a 
 - it is human-readable
 - ergo, human-writable too
 - used widely nowadays
-- can be transfored to other common data serialization formats such as JSON
+- can be transformed to other common data serialization formats such as JSON
 
 For my example I will use Python to 'parse' the YAML format. The idea is to show by example how a file stored in this format is readable by the machine.
 
-Our task is to use YAML to serialize, records of annotated bibliography. Note that there are other forms recording bibliograhy, such bibtex, but I claim that YAML requires much less effort.
+Our task is to use YAML to serialize, records of annotated bibliography. Note that there are other forms recording bibliography, such bibtex, but I claim that YAML requires much less effort.
 
 ## A simple example
 
@@ -75,7 +75,8 @@ summary: |
   a.    Trump has threatened to rescind $7 billion of funding to CHIP that was signed into law and passed by both the Senate and House. 
   6)     Threats to Immigrant Families
   a.    Public Charge, a proposed Dept. of Homeland Security rule that would limit immigrant access to benefits such as WIC and Medicaid is currently pending review.
-  advocacy_facts: |
+
+advocacy_facts: |
   In 2013, Congress mandated that the United States Department of Agriculture (USDA) and the United States Department of Health and Human Services (HHS) include pregnant women and young children as part of the 2020-2025 Dietary Guidelines for Americans (DGAs). The updated DGAs will inform federal nutrition programs that reach young children and their families, as well as serve as an important reference point for physicians, nutrition counselors, early childcare providers, among others.  – 1,000 Days
 
 additional_sources: 
@@ -100,23 +101,25 @@ with open("example.yaml", "r") as file:
 print(record['id'])
 ```
 
-    1,000Days_2018_What_We're_Watching_in_Congress
-    
+```nohighlight
+1,000Days_2018_What_We're_Watching_in_Congress
+```
 
 
 ```python
 print(record['title'])
 ```
 
-    Congress is Back in Session: Here's What We're Watching
-    
+```nohighlight
+Congress is Back in Session: Here's What We're Watching
+``` 
 
 
 ```python
 print(record['keywords'])
 ```
 
-```text
+```nohighlight
 ['Congress', 'Farm Bill', 'Supplemental Nutrition Assistance Program', 'SNAP', 'The Special Supplemental Nutrition Program for Women', 'Infants and Children', 'WIC, 2020-2025 Dietary Guidelines for Americans', 'DGAs, Maternal Mortality', "Children's Health Insurance Program", 'CHIP, Medicaid', 'public charge']
 ```
 
@@ -125,24 +128,21 @@ print(record['keywords'])
 print(record['summary'])
 ```
 
-    This webpage produced by the advocacy group 1,000 Days provides a summary of Congressional items that the group is keeping an eye on during the summer of 2018. These items are:
-    1)     Changes to SNAP in the Farm Bill
-    a.    House of Representatives put forth a Farm Bill with significant reduction to SNAP that would reduce food security for low-income families in the US. The Senate has a more balanced bill that is set to be marked up on June 13
-    2)     Funding for WIC
-    a.    WIC is funded through the annual appropriation process. Both House and Senate appropriation bills include less FY19 WIC funding than FY18. Breastfeeding peer counselor funding in both bills remains at $60 million. 
-    3)     New Dietary Guidelines
-    a.    House and Senate support funding of $12.3 million to USDA to develop DGAs. 
-    4)     Maternal Mortality Legislation
-    a.    Both House and Senate have members who are introducing legislation on addressing high rates of maternal mortality in the US. The legislation will also focus on racial and ethnic disparities in maternal mortality rates in the US.
-    5)     Proposed Cuts to CHIP
-    a.    Trump has threatened to rescind $7 billion of funding to CHIP that was signed into law and passed by both the Senate and House. 
-    6)     Threats to Immigrant Families
-    a.    Public Charge, a proposed Dept. of Homeland Security rule that would limit immigrant access to benefits such as WIC and Medicaid is currently pending review.
-    advocacy_facts: |
-    In 2013, Congress mandated that the United States Department of Agriculture (USDA) and the United States Department of Health and Human Services (HHS) include pregnant women and young children as part of the 2020-2025 Dietary Guidelines for Americans (DGAs). The updated DGAs will inform federal nutrition programs that reach young children and their families, as well as serve as an important reference point for physicians, nutrition counselors, early childcare providers, among others.
-    additional_sources: 
-    - 'https://thousanddays.org/draft-house-farm-bill-will-harm-families-and-children/'
-    
+```nohighlight
+This webpage produced by the advocacy group 1,000 Days provides a summary of Congressional items that the group is keeping an eye on during the summer of 2018. These items are:
+1)     Changes to SNAP in the Farm Bill
+a.    House of Representatives put forth a Farm Bill with significant reduction to SNAP that would reduce food security for low-income families in the US. The Senate has a more balanced bill that is set to be marked up on June 13
+2)     Funding for WIC
+a.    WIC is funded through the annual appropriation process. Both House and Senate appropriation bills include less FY19 WIC funding than FY18. Breastfeeding peer counselor funding in both bills remains at $60 million. 
+3)     New Dietary Guidelines
+a.    House and Senate support funding of $12.3 million to USDA to develop DGAs. 
+4)     Maternal Mortality Legislation
+a.    Both House and Senate have members who are introducing legislation on addressing high rates of maternal mortality in the US. The legislation will also focus on racial and ethnic disparities in maternal mortality rates in the US.
+5)     Proposed Cuts to CHIP
+a.    Trump has threatened to rescind $7 billion of funding to CHIP that was signed into law and passed by both the Senate and House. 
+6)     Threats to Immigrant Families
+a.    Public Charge, a proposed Dept. of Homeland Security rule that would limit immigrant access to benefits such as WIC and Medicaid is currently pending review.
+```    
     
 
 
@@ -152,9 +152,9 @@ record['date']
 
 
 
-
-    datetime.date(2018, 6, 5)
-
+```nohighlight
+datetime.date(2018, 6, 5)
+```
 
 
 
@@ -164,9 +164,9 @@ record['date'].year
 
 
 
-
-    2018
-
+```nohighlight
+2018
+```
 
 
 ## How does it work?
@@ -218,16 +218,16 @@ with open("example2.yaml", "r") as file:
 display(record2)
 ```
 
-
-    {'anumber': 2,
-     'anothernumber': 3.1416,
-     'astring': 'hello, world!',
-     'anotherstring': 'noproblemhere',
-     'adate': datetime.date(2018, 9, 11),
-     'alist': ['these', 'is', 'a', 'list', 'with', 'name'],
-     'anotherlist': ['can', 'use', 'brackets'],
-     'adict': {'key1': 'value1', 'key2': 'value2', 'key3': ['value31', 'value32']}}
-
+```nohighlight
+{'anumber': 2,
+    'anothernumber': 3.1416,
+    'astring': 'hello, world!',
+    'anotherstring': 'noproblemhere',
+    'adate': datetime.date(2018, 9, 11),
+    'alist': ['these', 'is', 'a', 'list', 'with', 'name'],
+    'anotherlist': ['can', 'use', 'brackets'],
+    'adict': {'key1': 'value1', 'key2': 'value2', 'key3': ['value31', 'value32']}}
+```
 
 Let's the data types that Python assigns to the read objects.
 
@@ -237,18 +237,19 @@ for key, val in record2.items():
     print(key, "has data type: ", type(val))
 ```
 
-    anumber has data type:  <class 'int'>
-    anothernumber has data type:  <class 'float'>
-    astring has data type:  <class 'str'>
-    anotherstring has data type:  <class 'str'>
-    adate has data type:  <class 'datetime.date'>
-    alist has data type:  <class 'list'>
-    anotherlist has data type:  <class 'list'>
-    adict has data type:  <class 'dict'>
-    
+```nohighlight
+anumber has data type:  <class 'int'>
+anothernumber has data type:  <class 'float'>
+astring has data type:  <class 'str'>
+anotherstring has data type:  <class 'str'>
+adate has data type:  <class 'datetime.date'>
+alist has data type:  <class 'list'>
+anotherlist has data type:  <class 'list'>
+adict has data type:  <class 'dict'>
+```
 
 ## Multiline strings
-There are two ways to deal with long texts. Collapsing lines, when the text is really a long line or paragraph', or respecting format. Here'a an example.
+There are two ways to deal with long texts. Collapsing lines, when the text is really a long line or paragraph', or respecting format. Here's an example.
 
 ```yaml
 # filename: example3.yml
@@ -274,10 +275,11 @@ with open("example3.yaml", "r") as file:
 print(longstrings['include_newlines'])
 ```
 
-    exactly as you see
-    will appear these three
-    lines of poetry
-    
+```nohighlight
+exactly as you see
+will appear these three
+lines of poetry
+```    
     
 
 
@@ -285,8 +287,9 @@ print(longstrings['include_newlines'])
 print(longstrings['fold_newlines'])
 ```
 
-    this is really a single line of text despite appearances
-    
+```nohighlight
+this is really a single line of text despite appearances
+```
 
 ### More than one record per file
 
@@ -314,6 +317,7 @@ with open("example4.yaml", "r") as file:
         display(record)
 ```
 
-    This is record 1
-    
+```nohighlight
+This is record 1
+```
 
