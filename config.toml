@@ -233,22 +233,22 @@ enableGitInfo = false
 
   [[params.social]]
     icon = "github"
-    icon_pack = "fa"
+    icon_pack = "fab"
     link = "//github.com/mauriciogtec"
     
   [[params.social]]
-    icon = "linkedin"
-    icon_pack = "fa"
+    icon = "linkedin-in"
+    icon_pack = "fab"
     link = "//linkedin.com/in/mauriciogtec"
 
   [[params.social]]
     icon = "envelope"
-    icon_pack = "fa"
+    icon_pack = "fas"
     link = "mailto:mauriciogtec@gmail.com"
 
   [[params.social]]
     icon = "twitter"
-    icon_pack = "fa"
+    icon_pack = "fab"
     link = "//twitter.com/mauriciogtec"
 
   # [[params.social]]
