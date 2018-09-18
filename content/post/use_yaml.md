@@ -387,4 +387,4 @@ There isn't much science to YAML. Most of the time what we learned is enough. Bu
 
 ## Practice
 
-A great opiton to know if you are using the right syntax is too check with this online parser: [](http://yaml-online-parser.appspot.com/)
+A great option for checking quickly if your YAML syntax is correct, is to use an online parser like this one: [yaml-online-parser.appspot.com](http://yaml-online-parser.appspot.com/)
