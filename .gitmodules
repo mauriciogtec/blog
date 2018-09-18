@@ -4,6 +4,7 @@
 [submodule "mauriciogtec.github.io"]
 	path = mauriciogtec.github.io
 	url = https://github.com/mauriciogtec/mauriciogtec.github.io
+	branch = master
 [submodule "public"]
 	path = public
 	url = https://github.com/mauriciogtec/mauriciogtec.github.io
