@@ -385,3 +385,6 @@ Suppose that we want to know what id's are associated with the topic `sports`. T
 
 There isn't much science to YAML. Most of the time what we learned is enough. But to learn more you can check the official documentation and this [reference card](http://yaml.org/refcard.html).
 
+## Practice
+
+A great opiton to know if you are using the right syntax is too check with this online parser: [](http://yaml-online-parser.appspot.com/)
