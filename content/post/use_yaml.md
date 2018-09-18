@@ -24,6 +24,7 @@ While modern approaches in Big Data endorse the strategy of first extracting hig
 You are probably familiar with CSVs, because you can create CSVs in Excel, which makes them quite handy. However, they are mainly useful for highly structured data having a fixed known number of columns per record.
 
 I want to present a basic introduction to YAML (yet-another-markup-language), a simple approach to keeping data records. It's advantages are
+
 - it is machine-readable
 - it is human-readable
 - ergo, human-writable too
@@ -172,6 +173,7 @@ record['date'].year
 ## How does it work?
 
 There are the things that can be input in a YAML:
+
 - "*key: value*" pairs
 - *lists*: denoted with brackets `[x1, x2, ..., xn]` or with indented dashes as `keywords` in the previous example.
 - *value* can be atomic such as strings, numbers or dates, or it can be a list of these atomic elements, or even a list of "key: value" pairs
@@ -249,7 +251,7 @@ adict has data type:  <class 'dict'>
 ```
 
 ## Multiline strings
-There are two ways to deal with long texts. Collapsing lines, when the text is really a long line or paragraph', or respecting format. Here's an example.
+There are two ways to deal with long texts. Collapsing lines, when the text is really a long line or paragraph', or respecting format. Here is an example.
 
 ```yaml
 # filename: example3.yml
