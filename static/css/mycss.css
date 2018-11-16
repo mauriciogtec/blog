@@ -12,3 +12,11 @@ code {
 .language-nohighlight {
     color: blue;
 }
+
+body {
+    font-size: 85%;
+}
+
+ul.ul-interests.ul-edu li{
+    font-size: 85%;
+}

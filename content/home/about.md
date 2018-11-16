@@ -10,12 +10,14 @@ weight = 5
 # List your academic interests.
 [interests]
   interests = [
-    "Bayesian Statistics",
-    "Machine Learning",
     "Deep Learning",
-    "High-performance Computing",
-    "Artificial Intelligence",
-    "Software Development"
+    "Bayesian Nonparametrics",
+    "Reinforcement Learning",
+    "Dynamic Models and Particle Filters",
+    "Network Data and Models",
+    "Random Forests ad GBMs",
+    "Natural Language Processing",
+    "Applied Statistical Analysis"
   ]
 
 # List your qualifications (such as academic degrees).
@@ -38,8 +40,6 @@ weight = 5
 
 ### About me
 
-Hi! I am Mauricio Garcia Tec, inquisitive data scientist and graduate student at UT Austin, where I currently work in developing novel algorithms for fitting spatiotemporal Machine Learning and Statistical models in large-data scenarios.
+Hi! I am an inquisitive Ph.D. student at UT Austin. Passionate for the art of mathematics and computers, I began my career tackling real-world problems with economic and financial data. Today, I seek to contribute to ongoing AI research from two perspectives: by developing scalable, parallelizable and decentralized algorithms, and by harnessing Probability and Statistics to provide insights and suggest smarter models. Please reach out if you want to collaborate. 
 
-I acquired broad experience tackling real-world data problems throughout my ventures in quantitative finance, public policy research, and university lecturing. See my [LinkedIn profile](https://www.linkedin.com/in/mauriciogtec/) for more details about my skills and experience. 
-
-My other interests include Bayesian statistics, which provide an elegant framework for statistical modelling with better model composability, model selection, and uncertainty quantification than traditional approaches. Bayesian models are usually slower to train than their classical counterparts, but we are working to change that.
+See my [LinkedIn profile](https://www.linkedin.com/in/mauriciogtec/) or [CV](https://github.com/mauriciogtec/mauriciogtec.github.io/resources/Resume2018-2.pdf) for more details about my skills and experience. 
