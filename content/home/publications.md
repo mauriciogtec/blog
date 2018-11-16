@@ -36,9 +36,9 @@ publication_type = "-1"
 exclude_selected = false
 +++
 
-- Williamson, S., __Mauricio Tec__. ["Random clique covers for graphs with local density and global sparsity"][spatial-denoise]. Submitted to AISTATS 2019. Preprint arXiv:1810.06738, 2018.
+- Williamson, S., __Mauricio Tec__. ["Random clique covers for graphs with local density and global sparsity"][random-cliques]. Submitted to AISTATS 2019. Preprint arXiv:1810.06738, 2018.
 
-- Zuniga-Garcia, N., __Mauricio Tec__, J. G. Scott, N. Ruiz-Juri, R. Machemehl. ["Evaluation of Ride-Sourcing Search Frictions and Driver Productivity: A Spatial Denoising Approach"][random-cliques]. Preprint arXiv:1809.10329. Presented at INFORMS 2018. In review for publication by Transportation Research Part C, 2018.
+- Zuniga-Garcia, N., __Mauricio Tec__, J. G. Scott, N. Ruiz-Juri, R. Machemehl. ["Evaluation of Ride-Sourcing Search Frictions and Driver Productivity: A Spatial Denoising Approach"][spatial-denoise]. Preprint arXiv:1809.10329. Presented at INFORMS 2018. In review for publication by Transportation Research Part C, 2018.
 
 
 [spatial-denoise]: https://arxiv.org/pdf/1809.10329.pdf'
