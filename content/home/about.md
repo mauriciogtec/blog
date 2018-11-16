@@ -42,4 +42,7 @@ weight = 5
 
 Hi! I am an inquisitive Ph.D. student at UT Austin. Passionate for the art of mathematics and computers, I began my career tackling real-world problems with economic and financial data. Today, I seek to contribute to ongoing AI research from two perspectives: by developing scalable, parallelizable and decentralized algorithms, and by harnessing Probability and Statistics to provide insights and suggest smarter models. Please reach out if you want to collaborate. 
 
-See my [LinkedIn profile](https://www.linkedin.com/in/mauriciogtec/) or [CV](https://github.com/mauriciogtec/mauriciogtec.github.io/resources/Resume2018-2.pdf) for more details about my skills and experience. 
+See my [LinkedIn profile][linkedin-link] or [CV][cv-link] for more details about my skills and experience. 
+
+[cv-link]: https://github.com/mauriciogtec/blog/raw/master/resources/Resume2018-2.pdf
+[linkedin-link]: https://www.linkedin.com/in/mauriciogtec/
