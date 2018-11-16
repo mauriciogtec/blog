@@ -15,7 +15,6 @@ weight = 5
     "Reinforcement Learning",
     "Dynamic Models and Particle Filters",
     "Network Data and Models",
-    "Random Forests ad GBMs",
     "Natural Language Processing",
     "Applied Statistical Analysis"
   ]
