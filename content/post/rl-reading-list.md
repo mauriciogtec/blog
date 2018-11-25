@@ -54,7 +54,7 @@ Another considerable part of the literature centers around the idea of minimizin
 
 $$ T\mu_*  - \sum\_{t=1}^T \mu\_{\pi(t)} $$
 
-where $\mu\_* = \max\_i E(X\_i)$, and $\mu\_{\pi(t)}$ is the mean of the random variable chosen at time $t$ by the sampling strategy $\pi$. The idea of regret was introduced by [Lai and Robbins][lai-robbins] (1985). A recent highly-cited survey is [(Bubeck & Bianchi, 2012)][bubbeck-bianchi]. Not suprisingly, the analysis techniques rely on probability concentration inequalities. For example, an application of Hoeffding's inequality leads to the so-called *upper confidence bound* (UCB) rule, namely,
+where $\mu\_* = \max\_i E(X\_i)$, and $\mu\_{\pi(t)}$ is the mean of the random variable chosen at time $t$ by the sampling strategy $\pi$. The idea of regret was introduced by [Lai and Robbins][lai-robbins] (1985). A recent highly-cited survey is [(Bubeck & Bianchi, 2012)][bubbeck-bianchi]. Not surprisingly, the analysis techniques rely on probability concentration inequalities. For example, an application of Hoeffding's inequality leads to the so-called *upper confidence bound* (UCB) rule, namely,
 $$
 \pi(t) = \mathrm{argmax}_i \; \hat{\mu}_i + \sqrt{\frac{2\log t}{n_i}}
 $$
@@ -66,7 +66,7 @@ Both Thompson Sampling and UCB provide a solution to the dilemma of *exploitatio
 
 A recent must-read reference is [Riquelme et al][riquelme] (2018), which discusses Deep Bayesian Bandits. Here, the $X_i$ are not independent and $K$ is very large. In fact, the input space can be treated as a continuous space. Essentially, what deep neural networks do is find common patterns in the input space and effectively reduce $K$. Multi-armed bandit problems are building blocks for more complicated tasks, where often it is necessary to learn from images or other complex data.
 
-Several variants of the multi-armed bandit problem exist. One direction is to add additional structure; for a recent survey and state-of-the-art approach we have [Combes et al][combes] (2017). Another direction is to assume that the $X_i$ change over time, the so-called non-stationary bandits. This is a hard problem, and current approaches can be improved, both theoretically and pragmatically (*c.f.* [Besbes et al][besbes] (2014) and [Wu et al][wu] (2018)).
+Several variants of the multi-armed bandit problem exist. One direction is to add additional structure; for a recent survey and state-of-the-art approach we have [Combes et al][combes] (2017). Another direction is to allow the distribution of the $X_i$ to change over time: the so-called non-stationary bandits. This is a hard problem, and current approaches can be improved, both theoretically and pragmatically (*c.f.* [Besbes et al][besbes] (2014) and [Wu et al][wu] (2018)).
 
 A natural question is to ask if the principles of multi-armed bandit can be applied to model selection and hyper-parameter tuning in statistics. This technique is known as *Bayesian Optimization* and is also an active area of research. For a recent survey, we can consult [Shahriari et al][shahriari] (2016).
 
@@ -100,7 +100,9 @@ This equation is known as the [Bellman equation][bellman]. The Markov assumption
 
  Often, a discount factor is added to the definition of $G_t$, so that $G_t := \sum_{u=t}^\infty \gamma^{u-t}R_{s(u), \pi_*(u)}$. With $0<\gamma < 1$, this guarantees convergence for non finite tasks, and the Bellman equation can be adapted accordingly. However, this as a technical addition, rather than an essential part of the idea. 
 
-The Bellman equation leads to several schemes for approximate solutions. One of the most celebrated approaches, with numerous variants and extensions, is [$Q$-learning][q-learning]. We start by creating a table for each possible pair $(s, a)$. Then, at each step of the algorithm, given a current approximation $q$ to $Q$, a starting state $s$, a selected action $a$, a reward observed after choosing $a$, and the new state $s'$ determined by the environment from the decision. We can perform the update
+### Q-Learning
+
+The Bellman equation leads to several schemes for approximate solutions. One of the most celebrated approaches, with numerous variants and extensions, is $Q$-learning [(Watkins, 1989)][watkins]. We start by creating a table for each possible pair $(s, a)$. Then, at each step of the algorithm, given a current approximation $q$ to $Q$, a starting state $s$, a selected action $a$, a reward observed after choosing $a$, and the new state $s'$ determined by the environment from the decision. We can perform the update
 $$ q(s, a) \leftarrow (1 - \alpha) q(s, a) + \alpha(r + \max_{a'} q(s', a')) \quad \text{for a learning rate } \quad 0<\alpha<1. $$
 At the next iteration, the new selected action will be $\mathrm{argmax}_{a' \in A_{s'}} q(s', a')$. We repeat the algorithm until convergence of $q$ or until the rewards reach a desired average level. 
 
@@ -118,23 +120,24 @@ More generally, we can replace it with any function approximation scheme $f$ and
 $$
 l(\beta \mid s, a, r, s', a') = (r + f(\beta \mid s', a') - f(\beta \mid s, a))^2.
 $$
-Then we can optimize with respect to $\beta$, so that $f$ will approximate $Q$ by the Bellman equation. This is exactly what is done in Deep Q-earning [(Mnih et al., 2013)][mnih]. Since deep learning is simply a highly flexible functional model for $f$. This has been useful when learning from image or text data, tasks in which neural networks provide the best known results. 
+Then we can optimize with respect to $\beta$, so that $f$ will approximate $Q$ by the Bellman equation. This is exactly what is done in Deep Q-Learning [(Mnih et al., 2013)][mnih]. Since deep learning is simply a highly flexible functional model for $f$. This has been useful when learning from image or text data, tasks in which neural networks provide the best known results. 
 
-The above loss kernel is only define for *one* transition. So an usual approach is to use an online optimization algorithm, which can update $f$ with one data point: the usual choice is stochastic gradient descent. It also has been demonstrated that reusing older transitions--known as experience replay [(Schaul et al., 2015)][schaul]--improves the behaviour.
+The above loss kernel is only define for *one* transition. So an usual approach is to use an online optimization algorithm, which can update $f$ with one data point: the usual choice is stochastic gradient descent. It also has been demonstrated that reusing older transitions--known as experience replay [(Schaul et al., 2015)][schaul]--improves the behaviour. Another alternative is to do batch updates or to have parallel actors learning simultaneously [(Mnih et al., 2016)][mnih-2016].
 
 
-
-It's impossible to summarise the entire literature. I am missing several popular approaches; important omissions are policy gradient methods. I will mention them briefly on the deep reinforcement learning section. 
+Another popular and different approach in reinforcement learning problems are Monte Carlo tree-search algorithms. We explain these in the following section.
 
 ### MonteCarlo Tree Search (MCTS).  
 
-MCTS is used for repeated playouts, where tasks yield a reward only when they are completed. This is a common situation in games. MCTS has been a key tool in developing computer programs capable of defeating master players of Backgammon, Chess or Go.
+MCTS is used for tasks composed of repeated playouts, usually when a reward is received only when the playout is completed. This is a common situation in board games, in which the reward signal is imply win or loss at the end of the game.
 
-The idea is simple: 
+MCTS was a key tool in developing computer programs capable of defeating master players of Backgammon, Chess and Go. In its heart, it is simply using the theory developed for multi-armed bandits with changing states. A highly-cited review is [(Browne et al., 2012)][browne].
 
-An interesting new lie of reserach
+The idea is way simple: 
+- We'll solve an independent bandit problem. For each visited state: we select according to Thompson sampling or UCB1 if the state has been visited before, or randomly if it's never been seen.
+- When a reward is seen, it is propagated back to all visited states during that playout. For win-loss games, we record at each state the number wins and losses associated to it. Wins count +1 and losses as -1.
 
-**Deep reinforcement learning**
+
 
 
 ---
@@ -177,11 +180,13 @@ An interesting new lie of reserach
 
 ## References
 
+[**Download as bibtex**][bibtex-link]
+
 - Chapelle & Li An Empirical Evaluation of Thompson Sampling
 - Shahriari 
 - Thompson, William R. "On the likelihood that one unknown probability exceeds another in view of the evidence of two samples". Biometrika, 25(3–4):285–294, 1933.
 
-[**Download this as bibtex**][bibtex-link]
+
 
 
 
@@ -204,3 +209,7 @@ An interesting new lie of reserach
 [dabney]: [dabney]
 [mnih]: mnih
 [schaul]: schaul
+[silver]: silver
+[mnih-2016]: mnih
+[watkins]: watkins
+[browne]: browne
