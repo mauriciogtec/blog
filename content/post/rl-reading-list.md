@@ -4,7 +4,7 @@ date = 2018-11-24T11:11:35-06:00
 draft = false
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
-authors = ['Mauricio Tec', 'Stephen Walker']
+authors = ['Mauricio Tec']
 
 # Tags and categories
 # For example, use `tags = []` for no tags, or the form `tags = ["A Tag", "Another Tag"]` for one or more tags.
@@ -23,7 +23,7 @@ preview = true
 
 +++
 
-###  -- This is a draft --
+*Current Draft: 2018-11-26*
 
 Here's a list to Reinforcement Learning ideas and papers. It is mostly for personal research, as part of my work as PhD student at the University of Texas at Austin.
 
@@ -54,7 +54,7 @@ Another considerable part of the literature centers around the idea of minimizin
 
 $$ T\mu\_*  - \sum\_{t=1}^T \mu\_{\pi(t)} $$
 
-where $\mu\_* = \max\_i E(X\_i)$, and $\mu\_{\pi(t)}$ is the mean of the random variable chosen at time $t$ by the sampling strategy $\pi$. The idea of regret was introduced by [Lai and Robbins][lai-robbins] (1985). A recent highly-cited survey is [(Bubeck & Bianchi, 2012)][bubbeck-bianchi]. Not surprisingly, the analysis techniques rely on probability concentration inequalities. For example, an application of Hoeffding's inequality leads to the so-called *upper confidence bound* (UCB) rule, namely,
+where $\mu\_* = \max\_i E(X\_i)$, and $\mu\_{\pi(t)}$ is the mean of the random variable chosen at time $t$ by the sampling strategy $\pi$. The idea of regret was introduced by [Lai and Robbins][lai-robbins] (1985). A recent highly-cited survey is [(Bubeck & Bianchi, 2012)][bubeck-bianchi]. Not surprisingly, the analysis techniques rely on probability concentration inequalities. For example, an application of Hoeffding's inequality leads to the so-called *upper confidence bound* (UCB) rule, namely,
 $$
 \pi(t) = \mathrm{argmax}_i \; \hat{\mu}_i + \sqrt{\frac{2\log t}{n\_i}}
 $$
@@ -136,7 +136,7 @@ l(\beta \mid s, a, r, s', a') = (r + f(\beta \mid s', a') - f(\beta \mid s, a))^
 $$
 Then we can optimize with respect to $\beta$, so that $f$ will approximate $Q$ by the Bellman equation. This is exactly what is done in Deep Q-Learning [(Mnih et al., 2013)][mnih]. Since deep learning is simply a highly flexible functional model for $f$. This has been useful when learning from image or text data, tasks in which neural networks provide the best known results. 
 
-The above loss kernel is only define for *one* transition. So an usual approach is to use an online optimization algorithm, which can update $f$ with one data point: the usual choice is stochastic gradient descent. It also has been demonstrated that reusing older transitions--known as experience replay [(Schaul et al., 2015)][schaul]--improves the behaviour. Another alternative is to do batch updates or to have parallel actors learning simultaneously [(Mnih et al., 2016)][mnih-2016].
+The above loss kernel is only define for *one* transition. So an usual approach is to use an online optimization algorithm, which can update $f$ with one data point: the usual choice is stochastic gradient descent. It also has been demonstrated that reusing older transitions--known as experience replay [(Lillicrap et al., 2015)][lillicrap]--improves the behaviour. Another alternative is to do batch updates or to have parallel actors learning simultaneously [(Mnih et al., 2016)][mnih-2016].
 
 
 Another popular and different approach in reinforcement learning problems are Monte Carlo tree-search algorithms. We explain these in the following section.
@@ -148,6 +148,7 @@ MCTS is used for tasks composed of repeated playouts, usually when a reward is r
 MCTS was a key tool in developing computer programs capable of defeating master players of Backgammon, Chess and Go. In its heart, it is simply using the theory developed for multi-armed bandits with changing states. A highly-cited review is [(Browne et al., 2012)][browne].
 
 The idea is way simple: 
+
 - We'll solve an independent bandit problem for each state using Thompson sampling, UCB1 or other multiarmed-bandit algorithm.
 - A game is played until the end, when a reward is observed, it is propagated back through all the trace that lead to that state.
 - For win-loss games, we record at each state the number wins and losses associated when that node has appeared in the game. Wins count +1 and losses as -1.
@@ -159,11 +160,79 @@ The idea is way simple:
 
 ---
 
-## Web
+## Interesting links
 
-- [https://spinningup.openai.com]() : It contains
+- https://spinningup.openai.com: OpenAI project with pedagogical deep reinforcement learning material, including an updated list of key papers an ideas, as well code exercises to get started.
 
 ---
+
+## References
+
+[**Download as bibtex**][bibtex-link]
+
+<!-- To generate this section use pandoc on resources folder: pandoc --filter=pandoc-citeproc --standalone rl-reading-list.md -o rl-reading-list.html -->
+
+<div id="refs" class="references">
+<div id="ref-Bellman:1957">
+<p>Bellman, Richard. 1957. <em>Dynamic Programming</em>. 1st ed. Princeton, NJ, USA: Princeton University Press.</p>
+</div>
+<div id="ref-NIPS2014_5378">
+<p>Besbes, Omar, Yonatan Gur, and Assaf Zeevi. 2014. “Stochastic Multi-Armed-Bandit Problem with Non-Stationary Rewards.” In <em>Advances in Neural Information Processing Systems 27</em>, edited by Z. Ghahramani, M. Welling, C. Cortes, N. D. Lawrence, and K. Q. Weinberger, 199–207. Curran Associates, Inc. <a href="http://papers.nips.cc/paper/5378-stochastic-multi-armed-bandit-problem-with-non-stationary-rewards.pdf" class="uri">http://papers.nips.cc/paper/5378-stochastic-multi-armed-bandit-problem-with-non-stationary-rewards.pdf</a>.</p>
+</div>
+<div id="ref-Browne2012">
+<p>Browne, Cb, and Edward Powley. 2012. “A survey of monte carlo tree search methods.” <em>Intelligence and AI</em> 4 (1): 1–49. doi:<a href="https://doi.org/10.1109/TCIAIG.2012.2186810">10.1109/TCIAIG.2012.2186810</a>.</p>
+</div>
+<div id="ref-DBLP:journals/ftml/BubeckC12">
+<p>Bubeck, Sébastien, and Nicolò Cesa-Bianchi. 2012. “Regret Analysis of Stochastic and Nonstochastic Multi-Armed Bandit Problems.” <em>Foundations and Trends in Machine Learning</em> 5 (1): 1–122. doi:<a href="https://doi.org/10.1561/2200000024">10.1561/2200000024</a>.</p>
+</div>
+<div id="ref-NIPS2011_4321">
+<p>Chapelle, Olivier, and Lihong Li. 2011. “An Empirical Evaluation of Thompson Sampling.” In <em>Advances in Neural Information Processing Systems 24</em>, edited by J. Shawe-Taylor, R. S. Zemel, P. L. Bartlett, F. Pereira, and K. Q. Weinberger, 2249–57. Curran Associates, Inc. <a href="http://papers.nips.cc/paper/4321-an-empirical-evaluation-of-thompson-sampling.pdf" class="uri">http://papers.nips.cc/paper/4321-an-empirical-evaluation-of-thompson-sampling.pdf</a>.</p>
+</div>
+<div id="ref-DBLP:conf/nips/CombesMP17">
+<p>Combes, Richard, Stefan Magureanu, and Alexandre Proutière. 2017. “Minimal Exploration in Structured Stochastic Bandits.” In <em>Advances in Neural Information Processing Systems 30: Annual Conference on Neural Information Processing Systems 2017, 4-9 December 2017, Long Beach, ca, USA</em>, 1761–9. <a href="http://papers.nips.cc/paper/6773-minimal-exploration-in-structured-stochastic-bandits" class="uri">http://papers.nips.cc/paper/6773-minimal-exploration-in-structured-stochastic-bandits</a>.</p>
+</div>
+<div id="ref-DBLP:conf/aaai/DabneyRBM18">
+<p>Dabney, Will, Mark Rowland, Marc G. Bellemare, and Rémi Munos. 2018. “Distributional Reinforcement Learning with Quantile Regression.” In <em>Proceedings of the Thirty-Second AAAI Conference on Artificial Intelligence, (Aaai-18), the 30th Innovative Applications of Artificial Intelligence (Iaai-18), and the 8th AAAI Symposium on Educational Advances in Artificial Intelligence (Eaai-18), New Orleans, Louisiana, Usa, February 2-7, 2018</em>, 2892–2901. <a href="https://www.aaai.org/ocs/index.php/AAAI/AAAI18/paper/view/17184" class="uri">https://www.aaai.org/ocs/index.php/AAAI/AAAI18/paper/view/17184</a>.</p>
+</div>
+<div id="ref-LAI19854">
+<p>Lai, T.L, and Herbert Robbins. 1985. “Asymptotically Efficient Adaptive Allocation Rules.” <em>Advances in Applied Mathematics</em> 6 (1): 4–22. doi:<a href="https://doi.org/https://doi.org/10.1016/0196-8858(85)90002-8">https://doi.org/10.1016/0196-8858(85)90002-8</a>.</p>
+</div>
+<div id="ref-journals/corr/LillicrapHPHETS15">
+<p>Lillicrap, Timothy P., Jonathan J. Hunt, Alexander Pritzel, Nicolas Heess, Tom Erez, Yuval Tassa, David Silver, and Daan Wierstra. 2015. “Continuous Control with Deep Reinforcement Learning.” <em>CoRR</em> abs/1509.02971. <a href="http://dblp.uni-trier.de/db/journals/corr/corr1509.html#LillicrapHPHETS15" class="uri">http://dblp.uni-trier.de/db/journals/corr/corr1509.html#LillicrapHPHETS15</a>.</p>
+</div>
+<div id="ref-pmlr-v48-mniha16">
+<p>Mnih, Volodymyr, Adria Puigdomenech Badia, Mehdi Mirza, Alex Graves, Timothy Lillicrap, Tim Harley, David Silver, and Koray Kavukcuoglu. 2016. “Asynchronous Methods for Deep Reinforcement Learning.” In <em>Proceedings of the 33rd International Conference on Machine Learning</em>, edited by Maria Florina Balcan and Kilian Q. Weinberger, 48:1928–37. Proceedings of Machine Learning Research. New York, New York, USA: PMLR. <a href="http://proceedings.mlr.press/v48/mniha16.html" class="uri">http://proceedings.mlr.press/v48/mniha16.html</a>.</p>
+</div>
+<div id="ref-DBLP:journals/corr/MnihKSGAWR13">
+<p>Mnih, Volodymyr, Koray Kavukcuoglu, David Silver, Alex Graves, Ioannis Antonoglou, Daan Wierstra, and Martin A. Riedmiller. 2013. “Playing Atari with Deep Reinforcement Learning.” <em>CoRR</em> abs/1312.5602. <a href="http://arxiv.org/abs/1312.5602" class="uri">http://arxiv.org/abs/1312.5602</a>.</p>
+</div>
+<div id="ref-46647">
+<p>Riquelme, Carlos, George Tucker, and Jasper Roland Snoek. 2018. “Deep Bayesian Bandits Showdown.” In. <a href="https://openreview.net/pdf?id=SyYe6k-CW" class="uri">https://openreview.net/pdf?id=SyYe6k-CW</a>.</p>
+</div>
+<div id="ref-DBLP:journals/pieee/ShahriariSWAF16">
+<p>Shahriari, Bobak, Kevin Swersky, Ziyu Wang, Ryan P. Adams, and Nando de Freitas. 2016. “Taking the Human Out of the Loop: A Review of Bayesian Optimization.” <em>Proceedings of the IEEE</em> 104 (1): 148–75. doi:<a href="https://doi.org/10.1109/JPROC.2015.2494218">10.1109/JPROC.2015.2494218</a>.</p>
+</div>
+<div id="ref-DBLP:journals/corr/abs-1712-01815">
+<p>Silver, David, Thomas Hubert, Julian Schrittwieser, Ioannis Antonoglou, Matthew Lai, Arthur Guez, Marc Lanctot, et al. 2017. “Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm.” <em>CoRR</em> abs/1712.01815. <a href="http://arxiv.org/abs/1712.01815" class="uri">http://arxiv.org/abs/1712.01815</a>.</p>
+</div>
+<div id="ref-Sutton1998">
+<p>Sutton, Richard S., and Andrew G. Barto. 2018. <em>Reinforcement Learning: An Introduction</em>. Second. The MIT Press. <a href="http://incompleteideas.net/book/the-book-2nd.html" class="uri">http://incompleteideas.net/book/the-book-2nd.html</a>.</p>
+</div>
+<div id="ref-Tesauro:1995:TDL:203330.203343">
+<p>Tesauro, Gerald. 1995. “Temporal Difference Learning and Td-Gammon.” <em>Commun. ACM</em> 38 (3). New York, NY, USA: ACM: 58–68. doi:<a href="https://doi.org/10.1145/203330.203343">10.1145/203330.203343</a>.</p>
+</div>
+<div id="ref-10.2307/2332286">
+<p>Thompson, William R. 1933. “On the Likelihood That One Unknown Probability Exceeds Another in View of the Evidence of Two Samples.” <em>Biometrika</em> 25 (3/4). [Oxford University Press, Biometrika Trust]: 285–94. <a href="http://www.jstor.org/stable/2332286" class="uri">http://www.jstor.org/stable/2332286</a>.</p>
+</div>
+<div id="ref-Watkins:1989">
+<p>Watkins, Christopher John Cornish Hellaby. 1989. “Learning from Delayed Rewards.” PhD thesis, Cambridge, UK: King’s College. <a href="http://www.cs.rhul.ac.uk/~chrisw/new_thesis.pdf" class="uri">http://www.cs.rhul.ac.uk/~chrisw/new_thesis.pdf</a>.</p>
+</div>
+<div id="ref-Wu:2018:LCB:3209978.3210051">
+<p>Wu, Qingyun, Naveen Iyer, and Hongning Wang. 2018. “Learning Contextual Bandits in a Non-Stationary Environment.” In <em>The 41st International Acm Sigir Conference on Research &amp;#38; Development in Information Retrieval</em>, 495–504. SIGIR ’18. New York, NY, USA: ACM. doi:<a href="https://doi.org/10.1145/3209978.3210051">10.1145/3209978.3210051</a>.</p>
+</div>
+</div>
+
+----
 
 ## Reading list
 
@@ -195,38 +264,29 @@ The idea is way simple:
 
 **14\_** 
 
-## References
-
-[**Download as bibtex**][bibtex-link]
-
-- Chapelle & Li An Empirical Evaluation of Thompson Sampling
-- Shahriari 
-- Thompson, William R. "On the likelihood that one unknown probability exceeds another in view of the evidence of two samples". Biometrika, 25(3–4):285–294, 1933.
+----
 
 
 
-
-
-[thompson]: https://en.wikipedia.org/wiki/Thompson\_sampling
-[chappelle-li]: https://papers.nips.cc/paper/4321-an-empirical-evaluation-of-thompson-sampling.pdf
-[bubbeck-bianchi]: sdfsdf
-[lai-robbins]: sdfsd
-[riquelme]: blabla
-[combes]: combes
-[besbes]: besbes
-[wu]: wu
+[thompson]: https://www.jstor.org/stable/2332286
+[chappelle-li]: https://papers.nips.cc/paper/4321-an-empirical-evaluation-of-thompson-sampling
+[bubeck-bianchi]: https://arxiv.org/abs/1204.5721
+[lai-robbins]: http://www.sciencedirect.com/science/article/pii/0196885885900028
+[riquelme]: https://openreview.net/pdf?id=SyYe6k-CW
+[combes]: http://papers.nips.cc/paper/6773-minimal-exploration-in-structured-stochastic-bandits
+[besbes]: http://papers.nips.cc/paper/5378-stochastic-multi-armed-bandit-problem-with-non-stationary-rewards.pdf
+[wu]: https://arxiv.org/abs/1805.09365
 [shahriari]: https://ieeexplore.ieee.org/document/7352306
-[sutton-barto]: sutton-barto
-[alpha-zero]: alpha-zero
-[bellman]: bellman
-[q-learning]: bellman
-[tesauro]: tesauro
-[bibtex-link]: oneday
-[bellemare]: bellemare
-[dabney]: [dabney]
-[mnih]: mnih
-[schaul]: schaul
-[silver]: silver
-[mnih-2016]: mnih
-[watkins]: watkins
-[browne]: browne
+[sutton-barto]: http://incompleteideas.net/book/the-book.html
+[alpha-zero]: http://arxiv.org/abs/1712.01815
+[bellman]: http://books.google.com/books?id=fyVtp3EMxasC&pg=PR5&dq=dynamic+programming+richard+e+bellman&client=firefox-a#v=onepage&q=dynamic%20programming%20richard%20e%20bellman&f=false
+[watkins]: http://www.cs.rhul.ac.uk/~chrisw/new_thesis.pdf
+[tesauro]: https://cling.csd.uwo.ca/cs346a/extra/tdgammon.pdf
+[bellemare]: https://arxiv.org/abs/1707.06887
+[dabney]: https://arxiv.org/abs/1710.10044
+[mnih]: http://arxiv.org/abs/1312.5602
+[lillicrap]: https://arxiv.org/abs/1509.02971 
+[mnih-2016]: http://proceedings.mlr.press/v48/mniha16.pdf
+[browne]: http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.297.3086
+
+[bibtex-link]: https://github.com/mauriciogtec/blog/raw/master/resources/rl-reading-list/rl-reading-list.bib
