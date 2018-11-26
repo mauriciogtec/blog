@@ -134,9 +134,12 @@ MCTS is used for tasks composed of repeated playouts, usually when a reward is r
 MCTS was a key tool in developing computer programs capable of defeating master players of Backgammon, Chess and Go. In its heart, it is simply using the theory developed for multi-armed bandits with changing states. A highly-cited review is [(Browne et al., 2012)][browne].
 
 The idea is way simple: 
-- We'll solve an independent bandit problem. For each visited state: we select according to Thompson sampling or UCB1 if the state has been visited before, or randomly if it's never been seen.
-- When a reward is seen, it is propagated back to all visited states during that playout. For win-loss games, we record at each state the number wins and losses associated to it. Wins count +1 and losses as -1.
-
+- We'll solve an independent bandit problem for each state using Thompson sampling, UCB1 or other multiarmed-bandit algorithm.
+- A game is played until the end, when a reward is observed, it is propagated back through all the trace that lead to that state.
+- For win-loss games, we record at each state the number wins and losses associated when that node has appeared in the game. Wins count +1 and losses as -1.
+- In practice, we can't store a table with each and every observed state; so MCTS also contains rules that determine how to grow a tree from a root state using these principles. The idea is to estimate at each state, its best possible future total reward.
+- Several possibilities are available: for example, using early stopping for an already seen state, and used its current estimate for backpropagation. Another common strategy is to run several simultaneous monte carlo experiments starting from the fixed current state using the current tree policy, and then update the tree with the results. 
+- The MCTS rules fall in 4 types in order of execution: selection, expansion, simulation, backpropagation.
 
 
 
