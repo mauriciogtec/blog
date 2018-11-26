@@ -40,33 +40,33 @@ Here's a list to Reinforcement Learning ideas and papers. It is mostly for perso
 
 It is the most elementary problem of Reinforcement Learning, and the building block of many algorithms for more complex problems. 
 
-We start with random variables $X_1, ..., X_K$ representing the rewards of $K$ possible actions, and we have to decide a sampling strategy so that we maximize the *total reward* over time. Basically, we are interested in $\max(X_1, ..., X_K)$. We start with no data--no smart decision available--and at each turn, we must select one of the $X_i$ from which to sample (or one bandit arm, as in casino machines). 
+We start with random variables $X\_1, ..., X\_K$ representing the rewards of $K$ possible actions, and we have to decide a sampling strategy so that we maximize the *total reward* over time. Basically, we are interested in $\max(X\_1, ..., X\_K)$. We start with no data--no smart decision available--and at each turn, we must select one of the $X\_i$ from which to sample (or one bandit arm, as in casino machines). 
 
-The reward up to time $T$ is $R_T = \sum\_{t=1}^T X_t$. Naively, we could sample each arm several times and then select the arm whose sample has the highest mean; however, the idea is to learn quickly and reach high values as soon as possible. 
+The reward up to time $T$ is $R\_T = \sum\_{t=1}^T X\_t$. Naively, we could sample each arm several times and then select the arm whose sample has the highest mean; however, the idea is to learn quickly and reach high values as soon as possible. 
 
-The simplest version of the problem assumes that the $X_i$ are independent, and it is already an interesting problem.
+The simplest version of the problem assumes that the $X\_i$ are independent, and it is already an interesting problem.
 
-The first idea developed in this direction was [Thompson Sampling][thompson] (1933), which boils down to Bayesian inference. We begin by putting a prior belief over the distribution of each $X_i$ (usually uniform), and at each step we update our posterior belief of the selected arm with the observed value obtained after selecting it. The selection rule is to choose arm $i$ proportionally to our belief of how much its reward is higher than those of the other arms. The usual approach is to simulate a sample from each posterior distribution, and choose the arm whose simulation had the highest sampled value. The simplest version of the algorithm uses a Beta-Bernoulli conjugate model. Gaussian Processes are also used for more complicated tasks. 
+The first idea developed in this direction was [Thompson Sampling][thompson] (1933), which boils down to Bayesian inference. We begin by putting a prior belief over the distribution of each $X\_i$ (usually uniform), and at each step we update our posterior belief of the selected arm with the observed value obtained after selecting it. The selection rule is to choose arm $i$ proportionally to our belief of how much its reward is higher than those of the other arms. The usual approach is to simulate a sample from each posterior distribution, and choose the arm whose simulation had the highest sampled value. The simplest version of the algorithm uses a Beta-Bernoulli conjugate model. Gaussian Processes are also used for more complicated tasks. 
 
 Although the idea of Thompson sampling is very old, it remains an active area of research. For example, [Chappelle & Li][chappelle-li] (2011) compare multiple strategies and improvements over Thompson Sampling, it also discusses its optimality. 
 
 Another considerable part of the literature centers around the idea of minimizing the expected *regret* of a strategy $\pi$ up to time $T$, defined as
 
-$$ T\mu_*  - \sum\_{t=1}^T \mu\_{\pi(t)} $$
+$$ T\mu\_*  - \sum\_{t=1}^T \mu\_{\pi(t)} $$
 
 where $\mu\_* = \max\_i E(X\_i)$, and $\mu\_{\pi(t)}$ is the mean of the random variable chosen at time $t$ by the sampling strategy $\pi$. The idea of regret was introduced by [Lai and Robbins][lai-robbins] (1985). A recent highly-cited survey is [(Bubeck & Bianchi, 2012)][bubbeck-bianchi]. Not surprisingly, the analysis techniques rely on probability concentration inequalities. For example, an application of Hoeffding's inequality leads to the so-called *upper confidence bound* (UCB) rule, namely,
 $$
-\pi(t) = \mathrm{argmax}_i \; \hat{\mu}_i + \sqrt{\frac{2\log t}{n_i}}
+\pi(t) = \mathrm{argmax}_i \; \hat{\mu}_i + \sqrt{\frac{2\log t}{n\_i}}
 $$
 
-where $\hat{\mu}_i$ is the empirical mean of the samples from arm $i$, and $n_i$ is the number of times arm $i$ has been sampled. The second term appearing in this rule takes into account uncertainty and encourages exploration of less frequently selected actions. The contrast is evident: while the Bayesian approach (Thompson sampling) deals with uncertainty via the probability laws of posterior Bayesian inference, the UCB approach uses concentration inequalities. This contraposition is also a common theme in Theoretical Statistics. A common variation to the second term is to multiply it by a by a constant, in an attempt to increase or decrease the effects of uncertainty. 
+where $\hat{\mu}_i$ is the empirical mean of the samples from arm $i$, and $n\_i$ is the number of times arm $i$ has been sampled. The second term appearing in this rule takes into account uncertainty and encourages exploration of less frequently selected actions. The contrast is evident: while the Bayesian approach (Thompson sampling) deals with uncertainty via the probability laws of posterior Bayesian inference, the UCB approach uses concentration inequalities. This contraposition is also a common theme in Theoretical Statistics. A common variation to the second term is to multiply it by a by a constant, in an attempt to increase or decrease the effects of uncertainty. 
 
 Both Thompson Sampling and UCB provide a solution to the dilemma of *exploitation* *vs* *exploration*. A simplest approach is to only choose the arm with the highest $\hat{\mu}$, except with a probability $\epsilon$, in which case we choose completely at random. Most of the time, this $\epsilon$-greedy strategy is usually an underperformer. Also $\epsilon$ should ogo to zero eventually, but it is hard to know at which speed it is convenient.
 
 
-A recent must-read reference is [Riquelme et al][riquelme] (2018), which discusses Deep Bayesian Bandits. Here, the $X_i$ are not independent and $K$ is very large. In fact, the input space can be treated as a continuous space. Essentially, what deep neural networks do is find common patterns in the input space and effectively reduce $K$. Multi-armed bandit problems are building blocks for more complicated tasks, where often it is necessary to learn from images or other complex data.
+A recent must-read reference is [Riquelme et al][riquelme] (2018), which discusses Deep Bayesian Bandits. Here, the $X\_i$ are not independent and $K$ is very large. In fact, the input space can be treated as a continuous space. Essentially, what deep neural networks do is find common patterns in the input space and effectively reduce $K$. Multi-armed bandit problems are building blocks for more complicated tasks, where often it is necessary to learn from images or other complex data.
 
-Several variants of the multi-armed bandit problem exist. One direction is to add additional structure; for a recent survey and state-of-the-art approach we have [Combes et al][combes] (2017). Another direction is to allow the distribution of the $X_i$ to change over time: the so-called non-stationary bandits. This is a hard problem, and current approaches can be improved, both theoretically and pragmatically (*c.f.* [Besbes et al][besbes] (2014) and [Wu et al][wu] (2018)).
+Several variants of the multi-armed bandit problem exist. One direction is to add additional structure; for a recent survey and state-of-the-art approach we have [Combes et al][combes] (2017). Another direction is to allow the distribution of the $X\_i$ to change over time: the so-called non-stationary bandits. This is a hard problem, and current approaches can be improved, both theoretically and pragmatically (*c.f.* [Besbes et al][besbes] (2014) and [Wu et al][wu] (2018)).
 
 A natural question is to ask if the principles of multi-armed bandit can be applied to model selection and hyper-parameter tuning in statistics. This technique is known as *Bayesian Optimization* and is also an active area of research. For a recent survey, we can consult [Shahriari et al][shahriari] (2016).
 
@@ -79,32 +79,46 @@ If we were in Heraclitus world where "no man ever steps in the same river twice"
 A Markov Decisions Process (MDP) is composed of the following ingredients: 
 
 1. A state space $S$
-2. A set of action sets for each state $\{A_s \mid s\in S\}$
-3. A family of random variables representing rewards for choosing an action $a$ given state $s$ $\{R_{s,a} \mid s\in S, a\in A_s\}$
+2. A set of action sets for each state $\{A\_s \mid s\in S\}$
+3. A family of random variables representing rewards for choosing an action $a$ given state $s$ $\{R\_{s,a} \mid s\in S, a\in A\_s\}$
 4. A Markov transition function governing the rules of the universe $p(s'\mid a, s)$. 
 
 The possible reward, as well as the transition rules of the universe depend only on the current state $s$ and the decision $a$. For an MDP, the current state $s$ is assumed to be observed. When there is only one state, we are in the multi-armed bandit case. 
 
-The goal of reinforcement learning is to find an optimal *policy* $\pi$, which is a family of rules that assign a probability $\pi(a\mid s)$ to selecting an action $a \in A_s$, given a current state $S$. Denoting the observed state and selected action at time $t$ as $s(t)$ and $\pi(t)$ respectively, the goal is to maximize $\sum_{t=1}^T R_{s(t), \pi(t)}$, the total reward up-to-time $t$.
+The goal of reinforcement learning is to find an optimal *policy* $\pi$, which is a family of rules that assign a probability $\pi(a\mid s)$ to selecting an action $a \in A\_s$, given a current state $S$. Denoting the observed state and selected action at time $t$ as $s(t)$ and $\pi(t)$ respectively, the goal is to maximize $\sum\_{t=1}^T R\_{s(t),  \pi(t)}$, the total reward up-to-time $t$.
 
 There is a variant of an MDP where the state can be unobserved; we call these partially observed MDPs or POMDPs, and they pose several additional challenges.
 
-There are several possible approaches to reinforcement learning. One variant is to use continuous input and action spaces. These approach, more common in the *control theory* literature, often needs the use of differential equations. Some algorithms exploit domain-specific properties of a problem. For example, if trying to learn to play a board game, it can take symmetries into account. When an algorithms seeks learn $p$, it is known as *model-based$; otherwise, it's said to be model free. The tendency in computer science to appraise model-free general purpose algorithms: best exemplified by the efforts of Google's company DeepMind and their algorithm [Alpha Zero][alpha-zero] (2017), the current champion programme of Go, Chess and Backgammon. Engineering literature seems to be more heavily focused on solving POMDPs and model-based methods.
+There are several possible approaches to reinforcement learning. One variant is to use continuous input and action spaces. These approach, more common in the *control theory* literature, often needs the use of differential equations. Some algorithms exploit domain-specific properties of a problem. For example, if trying to learn to play a board game, it can take symmetries into account. When an algorithms seeks learn the transition map $p(s'\mid s, a)$, we call it *model-based*; otherwise, *model-free*. The tendency in Computer Science is to appraise model-free general-purpose algorithms: best exemplified by the efforts of Google's company DeepMind and their algorithm [Alpha Zero][alpha-zero] (2017), the current champion programme of Go, Chess and Backgammon. Engineering literature seems to be more focused on solving POMDPs and model-based methods. Nonetheless, both communities care about both approaches.
 
 
-Under knowledge of the distribution of the rewards and finite tasks, it is possible to find an optimal policy using *dynamic programming* techniques, which is fancy name for using a one-step application of the Markov property. More specifically, for some optimal policy $\pi_*$, remaining total reward $G_t := \sum_{u=t}^\infty R_{s(u), \pi_*(u)}$, and action-value function $Q(s, a):= E[G_t \mid s, a, \pi_*]$, the Markov-property yields
+Under knowledge of the distribution of the rewards and finite tasks, it is possible to find an optimal policy exactly using the techniques of *dynamic programming*, which use a one-step application of the Markov property. More specifically, given:
+
+- some optimal policy $\pi\_\*$
+- remaining total reward $G\_t := \sum\_{u=t}^\infty R\_{s(u), \pi\_\*(u)}$
+- the action-value function $Q(s, a):= E[G\_t \mid s, a, \pi\_\*]$
+
+the Markov-property yields
 $$
-Q(s, a) =  E[R_{s(t + 1), \pi_*(t + 1)}] + \max_{a'\in A_s} Q(s(t+1), a')
+Q(s, a) =  E[R\_{s(t + 1), \pi\_\*(t + 1)}] + \max\_{a'\in A\_s} Q(s(t+1), a')
 $$
-This equation is known as the [Bellman equation][bellman]. The Markov assumption is implicit here in that $Q$ does not depend on $t$. From knowledge of $Q$ only, we can recover the optimal policy with $\pi_*(a\mid s) = \mathrm{argmax}_{a'}Q(s, a')$ (or at least an equivalent policy in expectation). If $s$ is a terminal state, then the second summand of the right-hand side of the equation is not included. Thus, under the aforementioned assumptions: we can solve the value of $Q$ for every state and actions leading to a terminal state in one step, and then continue using backward induction. [Sutton & Barto][sutton-barto] explain this in detail in their textbook.
+This equation is known as the [Bellman equation][bellman]. The Markov assumption is implicit here in that $Q$ does not depend on $t$. From knowledge of $Q$ only, we can recover the optimal policy with $\pi\_*(a\mid s) = \mathrm{argmax}_{a'}Q(s, a')$ (or at least an equivalent policy in expectation). If $s$ is a terminal state, then the second summand of the right-hand side of the equation is not included. Thus, under the aforementioned assumptions: we can solve the value of $Q$ for every state and actions leading to a terminal state in one step, and then continue using backward induction. [Sutton & Barto][sutton-barto] explain this in detail in their textbook.
 
- Often, a discount factor is added to the definition of $G_t$, so that $G_t := \sum_{u=t}^\infty \gamma^{u-t}R_{s(u), \pi_*(u)}$. With $0<\gamma < 1$, this guarantees convergence for non finite tasks, and the Bellman equation can be adapted accordingly. However, this as a technical addition, rather than an essential part of the idea. 
+ Often, a discount factor is added to the definition of $G\_t$, so that $G\_t := \sum\_{u=t}^\infty \gamma^{u-t}R\_{s(u), \pi\_*(u)}$. With $0<\gamma < 1$, this guarantees convergence for non finite tasks, and the Bellman equation can be adapted accordingly. However, this as a technical addition, rather than an essential part of the idea. 
 
 ### Q-Learning
 
-The Bellman equation leads to several schemes for approximate solutions. One of the most celebrated approaches, with numerous variants and extensions, is $Q$-learning [(Watkins, 1989)][watkins]. We start by creating a table for each possible pair $(s, a)$. Then, at each step of the algorithm, given a current approximation $q$ to $Q$, a starting state $s$, a selected action $a$, a reward observed after choosing $a$, and the new state $s'$ determined by the environment from the decision. We can perform the update
-$$ q(s, a) \leftarrow (1 - \alpha) q(s, a) + \alpha(r + \max_{a'} q(s', a')) \quad \text{for a learning rate } \quad 0<\alpha<1. $$
-At the next iteration, the new selected action will be $\mathrm{argmax}_{a' \in A_{s'}} q(s', a')$. We repeat the algorithm until convergence of $q$ or until the rewards reach a desired average level. 
+The Bellman equation leads to several schemes for approximate solutions. One of the most celebrated approaches, with numerous variants and extensions, is $Q$-learning [(Watkins, 1989)][watkins]. We start by creating a table for each possible pair $(s, a)$. Then, at each step of the algorithm, given:
+
+- a current approximation $q$ to $Q$
+- a starting state $s$
+- a selected action $a$
+- a reward $r$ received from choosing $a$
+- a new state $s'$ observed after choosing $a$, generated from the environment transition function,
+
+we can perform the update
+$$ q(s, a) \leftarrow (1 - \alpha) q(s, a) + \alpha(r + \max\_{a'} q(s', a')) \quad \text{for a learning rate } \quad 0<\alpha<1. $$
+Finally, for the next iteration the current state will be $s \leftarrow s'$, the selected action will be $a \leftarrow \mathrm{argmax}_{a' \in A\_{s'}} q(s', a')$ and $r$ will be drawn from the distribution of $R\_{sa}$. We repeat the algorithm until convergence of $q$ or until the rewards reach a desired average level. 
 
 Several remarks of statistical and probabilistic nature are available:
 - We are only using a one-step application of the Markov property. Equivalently, the observed reward sample $r$ is only used for one update. Reusing data from the rewards to update more previously visited states is at the heart of temporal difference learning methods, which were behind the first computer programmes to play Backgammon at human-expert level [(Tesauro, 1995)][tesauro].
@@ -112,8 +126,8 @@ Several remarks of statistical and probabilistic nature are available:
 - The distributional approach takes us back to the ideas of Thompson sampling, where it was shown that taking into account exploration and exploitation via posterior sampling is a good idea. These ideas have not been explored in depth.
 - The original approach to distributional reinforcement learning used a discrete approximation to an entire distribution, no structure whatsoever. A subsequent approach from the authors is more reasonable and attempts a quantile approximation approach [(Dabney et al., 2017)][dabney]. With this improvement, they outperform existing $Q$-learning approaches. 
 
-Here is another computational remark: for more complicated tasks it is impossible to store the table $Q$ for each possible pair $(s,a)$. Not even using supercomputer! No existing machine is close to be able to store all the possible state-action pairs of chess, not even close. Moreover, even if it was possible, it wouldn't necessarily the smartest thing to do. Since we care about learning fast, we can add a functional form to $Q$. For example, the family of linear approximation methods uses feature maps $\phi(s, a) = (\phi_1(s, a), ..., \phi_k(s, a))$ and
-$$ Q(s, a) \approx \sum_k \beta_k^\top\phi_k(s, a). $$
+Here is another computational remark: for more complicated tasks it is impossible to store the table $Q$ for each possible pair $(s,a)$. Not even using supercomputer! No existing machine is close to be able to store all the possible state-action pairs of chess, not even close. Moreover, even if it was possible, it wouldn't necessarily the smartest thing to do. Since we care about learning fast, we can add a functional form to $Q$. For example, the family of linear approximation methods uses feature maps $\phi(s, a) = (\phi\_1(s, a), ..., \phi\_k(s, a))$ and
+$$ Q(s, a) \approx \sum\_k \beta\_k^\top\phi\_k(s, a). $$
 The choice of feature maps is non-trivial, and it depends on the domain of application, it can be made of polynomials, sines, cosines, radial basis functions, convolutions, etc.
 
 More generally, we can replace it with any function approximation scheme $f$ and take a loss-function approach. Here is an strategy: regard a transition $(s, a) \to (r, s', a')$ as pseudo data, and define a loss-function kernel
@@ -153,33 +167,33 @@ The idea is way simple:
 
 ## Reading list
 
-**1_** 
+**1\_** 
 
-**2_** 
+**2\_** 
 
-**3_** 
+**3\_** 
 
-**4_**
+**4\_**
 
-**5_** 
+**5\_** 
 
-**6_** 
+**6\_** 
 
-**7_** 
+**7\_** 
 
-**8_** 
+**8\_** 
 
-**9_** 
+**9\_** 
 
-**10_**
+**10\_**
 
-**11_**
+**11\_**
 
-**12_**
+**12\_**
 
-**13_**
+**13\_**
 
-**14_** 
+**14\_** 
 
 ## References
 
@@ -193,7 +207,7 @@ The idea is way simple:
 
 
 
-[thompson]: https://en.wikipedia.org/wiki/Thompson_sampling
+[thompson]: https://en.wikipedia.org/wiki/Thompson\_sampling
 [chappelle-li]: https://papers.nips.cc/paper/4321-an-empirical-evaluation-of-thompson-sampling.pdf
 [bubbeck-bianchi]: sdfsdf
 [lai-robbins]: sdfsd
