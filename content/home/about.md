@@ -43,5 +43,5 @@ Hi! I am an inquisitive Ph.D. student at UT Austin. Passionate for the art of ma
 
 See my [LinkedIn profile][linkedin-link] or [resume][resume-link] for more details about my skills and experience. 
 
-[resume-link]: https://github.com/mauriciogtec/blog/raw/master/resources/Resume2018-2.pdf
+[resume-link]: https://github.com/mauriciogtec/blog/raw/master/resources/resume.pdf
 [linkedin-link]: https://www.linkedin.com/in/mauriciogtec/
