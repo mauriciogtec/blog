@@ -15,7 +15,7 @@ weight = 5
     "Natural Language Processing",
     "Bayesian Machine Learning",
     "Network Data and Models",
-    "Applied Statistical Analysis"
+    "Scalable inference"
   ]
 
 # List your qualifications (such as academic degrees).
