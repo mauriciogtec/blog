@@ -1,7 +1,7 @@
 +++
 title = "Distributed Computing: Julia vs MPI (Julia is super easy)"
 date = 2018-11-16T17:23:07-06:00
-draft = false
+draft = true
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
 authors = ["Mauricio Tec"]

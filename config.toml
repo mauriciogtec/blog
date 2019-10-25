@@ -9,7 +9,7 @@
 baseurl = "https://mauriciogtec.github.io/"
 
 # Title of your site
-title = "Unknot"
+title = "Mauricio Tec - The Unknot"
 
 # Your copyright notice - appears in site footer.
 # To display a copyright symbol, type `&copy;`.
@@ -58,7 +58,7 @@ enableGitInfo = false
 
   # Your details.
   name = "Mauricio Tec"
-  role = "PhD Student in Statistics"
+  role = "PhD Student in Machine Learning"
 
   # Organizations/Affiliations.
   #   Separate multiple entries with a comma, using the form: `[ {name="Org1", url=""}, {name="Org2", url=""} ]`.

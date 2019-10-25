@@ -11,22 +11,21 @@ weight = 5
 [interests]
   interests = [
     "Deep Learning",
-    "Bayesian Nonparametrics",
     "Reinforcement Learning",
-    "Dynamic Models and Particle Filters",
-    "Network Data and Models",
     "Natural Language Processing",
+    "Bayesian Machine Learning",
+    "Network Data and Models",
     "Applied Statistical Analysis"
   ]
 
 # List your qualifications (such as academic degrees).
 [[education.courses]]
-  course = "PhD candidate in Statistics"
-  institution = "University of Texas at Austin, USA"
+  course = "PhD in Machine Learning"
+  institution = "The University of Texas at Austin, USA"
   year = 'current'
 
 [[education.courses]]
-  course = "MSc in Mathematics"
+  course = "MSc in Mathematics (Part III)"
   institution = "University of Cambridge, UK"
   year = 2015
 
@@ -39,9 +38,9 @@ weight = 5
 
 ### About me
 
-Hi! I am an inquisitive Ph.D. student at UT Austin. Passionate for the art of mathematics and computers, I began my career tackling real-world problems with economic and financial data. Today, I seek to contribute to ongoing AI research from two perspectives: by developing scalable, parallelizable and decentralized algorithms, and by harnessing Probability and Statistics to provide insights and suggest smarter models. Please reach out if you want to collaborate. 
+<!-- Hi! I am an inquisitive Ph.D. student at UT Austin. Passionate for the art of mathematics and computers, I began my career tackling real-world problems with economic and financial data. Today, I seek to contribute to ongoing AI research from two perspectives: by developing scalable, parallelizable and decentralized algorithms, and by harnessing Probability and Statistics to provide insights and suggest smarter models. Please reach out if you want to collaborate.  -->
 
-See my [LinkedIn profile][linkedin-link] or [resume][resume-link] for more details about my skills and experience. 
+Let's build more robust and secure AI together! See my [LinkedIn profile][linkedin-link] or [resume][resume-link] for more details about my skills and experience. Please reach out if you want to collaborate.
 
-[resume-link]: https://github.com/mauriciogtec/blog/raw/master/resources/resume.pdf
+[resume-link]: ./mauricio-resume.pdf
 [linkedin-link]: https://www.linkedin.com/in/mauriciogtec/
