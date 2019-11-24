@@ -10,12 +10,12 @@ weight = 5
 # List your academic interests.
 [interests]
   interests = [
-    "Deep Learning",
     "Reinforcement Learning",
-    "Natural Language Processing",
-    "Bayesian Machine Learning",
+    "Linguistics",
+    "Bayesian Machine Learning (because Bayesian makes everything sweeter)",
     "Network Data and Models",
-    "Scalable inference"
+    "Scalable inference",
+    "Mathematics. I am and will always be a mathematician."
   ]
 
 # List your qualifications (such as academic degrees).

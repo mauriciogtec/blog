@@ -9,7 +9,7 @@ title = "Publications"
 subtitle = ""
 
 # Order that this section will appear in.
-weight = 30
+weight = 20
 
 # Number of publications to list.
 count = 10
@@ -36,10 +36,13 @@ publication_type = "-1"
 exclude_selected = false
 +++
 
-- Williamson, S., __Mauricio Tec__. ["Random clique covers for graphs with local density and global sparsity"][random-cliques]. Submitted to AISTATS 2019. Preprint arXiv:1810.06738, 2018.
+- Williamson, S., __Mauricio Tec__. ["Random clique covers for graphs with local density and global sparsity"][random-cliques]. Proceedings of the Conference on Uncertainty in Artificial Intelligence (UAI), 2018.
 
-- Zuniga-Garcia, N., __Mauricio Tec__, J. G. Scott, N. Ruiz-Juri, R. Machemehl. ["Evaluation of Ride-Sourcing Search Frictions and Driver Productivity: A Spatial Denoising Approach"][spatial-denoise]. Preprint arXiv:1809.10329. Presented at INFORMS 2018. In review for publication by Transportation Research Part C, 2018.
+- Zuniga-Garcia, N., __Mauricio Tec__, J. G. Scott, N. Ruiz-Juri, R. Machemehl. ["Evaluation of Ride-Sourcing Search Frictions and Driver Productivity: A Spatial Denoising Approach"][spatial-denoise]. Transportation Research Part C, 2019.
+
+- __Mauricio Tec__, N. Zuniga-Garcia, R. Machemehl, J. G. Scott. ["Large-Scale Spatiotemporal Density Smoothing with the Graph-fused Elastic Net: Application to Ride-sourcing Driver Productivity"][spatiotemporal-denoise]. Preprint arXiv:1911.08106, 2019.
 
 
-[spatial-denoise]: https://arxiv.org/pdf/1809.10329.pdf'
+[spatial-denoise]: https://arxiv.org/pdf/1809.10329.pdf
 [random-cliques]: https://arxiv.org/pdf/1810.06738.pdf 
+[spatiotemporal-denoise]: https://arxiv.org/pdf/1911.08106.pdf
