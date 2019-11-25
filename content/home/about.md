@@ -11,11 +11,10 @@ weight = 5
 [interests]
   interests = [
     "Reinforcement Learning",
-    "Linguistics",
-    "Bayesian Machine Learning (because Bayesian makes everything sweeter)",
+    "Natural Language Processing",
+    "Bayesian Machine Learning ('cause Bayesian makes sweeter)",
     "Network Data and Models",
-    "Scalable inference",
-    "Mathematics. I am and will always be a mathematician."
+    "Scalable inference"
   ]
 
 # List your qualifications (such as academic degrees).
