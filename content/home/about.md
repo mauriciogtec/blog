@@ -41,5 +41,5 @@ weight = 5
 
 Let's build more robust and secure AI together! See my [LinkedIn profile][linkedin-link] or [resume][resume-link] for more details about my skills and experience. Please reach out if you want to collaborate.
 
-[resume-link]: ./mauriciogtec-resume.pdf
+[resume-link]: ./mauriciogtec_resume.pdf
 [linkedin-link]: https://www.linkedin.com/in/mauriciogtec/
